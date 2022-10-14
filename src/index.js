@@ -1,17 +1,17 @@
 import './styles.css';
-import { addItemsEl, renderItems } from './modules/addremoveItems.js';
+import { addItems, renderItems } from './modules/addremoveItems.js';
 import completeAll from './modules/interraction.js';
 
-const addButton = document.querySelector('.addbtnEl');
-const itemsToBeAdd = document.querySelector('.itemsToBeAdd');
-const clearAll = document.querySelector('.completeBtn');
+const addButton = document.querySelector('.addbuttonEl');
+const todoListInput = document.querySelector('.todoListInput ');
+const clearAll = document.querySelector('.completeAll');
 
 window.addEventListener('load', () => {
   renderItems();
 });
 
 addButton.addEventListener('click', () => {
-  addItemsEl(itemsToBeAdd.value, false, JSON.parse(localStorage.getItem('listStorage')).length + 1);
+  addItems(todoListInput.value, false, JSON.parse(localStorage.getItem('listStorage')).length + 1);
   renderItems();
 });
 

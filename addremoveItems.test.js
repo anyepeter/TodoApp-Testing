@@ -1,15 +1,26 @@
-import { addItemsEl } from './src/modules/addremoveItems.js';
+import { addItems, renderItems } from './src/modules/addremoveItems.js';
 
 describe('Add and Remove Testing', () => {
   document.body.innerHTML = `
-  <input id='itemsToBeAdd'>
-  <button id='addButton'></button>
-  <div id='itemsContainer'></div>
+  <input id='toDoInput'>
+  <button id='addBtn'></button>
+  <div id='containerItems'></div>
   `;
 
   test('adding item to list', () => {
-    addItemsEl('paint', false, 0);
+    addItems('Washing', false, 0);
     const localGet = JSON.parse(localStorage.getItem('listStorage'));
     expect(localGet.length).toBe(1);
+  });
+
+  test('Removing item from list', () => {
+    addItems('Washing', false, 1);
+    const localGet = JSON.parse(localStorage.getItem('listStorage'));
+    expect(localGet.length).toBe(2);
+    localGet.pop();
+    localStorage.setItem('listStorage', JSON.stringify(localGet));
+    renderItems();
+    const todolist = document.getElementById('containerItems');
+    expect(todolist.childElementCount).toBe(1);
   });
 });

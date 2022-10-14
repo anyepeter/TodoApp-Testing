@@ -1,66 +1,69 @@
 /* eslint no-undefined: "error" */
 
-const itemsToBeAdd = document.querySelector('.itemsToBeAdd');
+const todoListInput = document.querySelector('.todoListInput');
 
 class ContainerClass {
-  Constructor(description, completed, index) {
+  constructor(description, completed, index) {
     this.description = description;
     this.completed = completed;
     this.index = index;
-    this.items = JSON.parse(localStorage.getItem('listStorage')) || [];
+    this.itemsArr = JSON.parse(localStorage.getItem('listStorage')) || [];
   }
 }
 
-const taskItem = new ContainerClass();
+const taskitems = new ContainerClass();
+
 const renderItems = () => {
-  const infoItems = JSON.parse(localStorage.getItem('listStorage')) || [];
-  const itemEI = document.getElementById('itemsContainer');
-  itemEI.innerHTML = '';
-  infoItems.forEach((element, id) => {
-    itemEI.innerHTML
+  const data = JSON.parse(localStorage.getItem('listStorage')) || [];
+  const containerlistEl = document.getElementById('containerItems');
+  containerlistEl.innerHTML = '';
+  data.forEach((element, id) => {
+    containerlistEl.innerHTML
     += `
-      <div class='doItems'>
-        <input class='itemClass' id='checkId-${id}', "completed"' type='checkbox' ${element.completed ? 'checked' : ''} onclick='checkItemsUpdate(${id}, "completed")'>
-        <input type='text' class='findInput' id='input-${id}' value=${element.description} />
-        <i onclick='checkItemsUpdate(${id}, "description")' class='fa-solid fa-file-pen' id='options-${id}'></i>
-        <i onclick='deleteItem(${id})' class='fa-solid fa-trash del-btn' id='delete-${id}'></i>
-      </div>
+    <div class='doItems'>
+    <input class='itemClass' id='checkId-${id}', "completed"' type='checkbox' ${element.completed ? 'checked' : ''} onclick='checkItemsUpdate(${id}, "completed")'>
+    <input type='text' class='findInput' id='input-${id}' value=${element.description} />
+    <i onclick='checkItemsUpdate(${id}, "description")' class='fa-solid fa-file-pen' id='options-${id}'></i>
+    <i onclick='deleteItem(${id})' class='fa-solid fa-trash del-btn' id='delete-${id}'></i>
+  </div>
     `;
   });
-  return infoItems.length;
+  return data.length;
 };
 
-const addItemsEl = (description, completed, index) => {
-  const newItem = new ContainerClass(description, completed, index);
-  taskItem.items.push(newItem);
-  localStorage.setItem('listStorage', JSON.stringify(taskItem.items));
-  itemsToBeAdd.value = '';
+const addItems = (description, completed, index) => {
+  const arrOfList = new ContainerClass(description, completed, index);
+  taskitems.itemsArr.push(arrOfList);
+  localStorage.setItem('listStorage', JSON.stringify(taskitems.itemsArr));
+  setTimeout(() => {
+    todoListInput.value = '';
+  }, 500);
   renderItems();
 };
 
-window.deleteItem = () => {
-  const deleteItemsBtn = [...document.querySelectorAll('.fa-trash')];
-  deleteItemsBtn.forEach((elem) => {
-    elem.addEventListener('click', () => {
-      taskItem.items.splice(deleteItemsBtn.indexOf(elem), 1);
-      taskItem.items.forEach((elem, index) => {
-        elem.index = index + 1;
+window.removeItems = () => {
+  const deleteBtn = [...document.querySelectorAll('.fa-trash')];
+  deleteBtn.forEach((item) => {
+    item.addEventListener('click', () => {
+      taskitems.itemsArr.splice(deleteBtn.indexOf(item), 1);
+      taskitems.itemsArr.forEach((item, index) => {
+        item.index = index + 1;
       });
-      localStorage.setItem('listStorage', JSON.stringify(taskItem.items));
+      localStorage.setItem('listStorage', JSON.stringify(taskitems.itemsArr));
       renderItems();
     });
   });
 };
 
-const checkItemsUpdate = (inputList, checkBoxInfo, id) => {
-  inputList = document.querySelector(`#input-${id}`).value;
-  checkBoxInfo = document.querySelector(`#checkId-${id}`).checked;
-  const mainArr = taskItem.items.map((itemEl) => {
+const checkItemsUpdate = (updateInput, updateCheckbox, id) => {
+  updateInput = document.querySelector(`#input-${id}`).value;
+  updateCheckbox = document.querySelector(`#check-${id}`).checked;
+  const mainArr = taskitems.itemsArr.map((itemEl) => {
     if (itemEl.index - 1 === id) {
-      itemEl.description = inputList;
+      itemEl.description = updateInput;
     }
     if (itemEl.index - 1 === id) {
-      itemEl.completed = checkBoxInfo;
+      itemEl.completed = updateCheckbox;
     }
 
     return itemEl;
@@ -69,4 +72,4 @@ const checkItemsUpdate = (inputList, checkBoxInfo, id) => {
   localStorage.setItem('listStorage', JSON.stringify(mainArr));
 };
 
-export { addItemsEl, renderItems, checkItemsUpdate };
+export { addItems, renderItems, checkItemsUpdate };

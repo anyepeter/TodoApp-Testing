@@ -3,7 +3,7 @@ const completeAll = () => {
     if (!item.completed) {
       return item;
     }
-    return '';
+    return null;
   });
 
   nonComplete = nonComplete.map((item, id) => {
