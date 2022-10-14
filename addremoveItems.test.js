@@ -1,4 +1,4 @@
-import { addItems, renderItems, checkItemsUpdate  } from './src/modules/addremoveItems.js';
+import { addItems, renderItems } from './src/modules/addremoveItems.js';
 
 describe('Add and Remove Testing', () => {
   document.body.innerHTML = `
@@ -24,7 +24,6 @@ describe('Add and Remove Testing', () => {
   });
 });
 
-
 describe('Testing the update functionalities', () => {
   document.body.innerHTML = `
     <input id='toDoInput'>
@@ -49,5 +48,4 @@ describe('Testing the update functionalities', () => {
     const itemsToDo = document.getElementById('containerItems');
     expect(itemsToDo.children[0].children[0].checked).toBe(false);
   });
-
 });
