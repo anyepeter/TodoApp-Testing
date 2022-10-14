@@ -1,4 +1,4 @@
-import { addItems, renderItems } from './src/modules/addremoveItems.js';
+import { addItemsEl } from './src/modules/addremoveItems.js';
 
 describe('Add and Remove Testing', () => {
   document.body.innerHTML = `
@@ -11,16 +11,5 @@ describe('Add and Remove Testing', () => {
     addItems('Washing', false, 0);
     const localGet = JSON.parse(localStorage.getItem('listStorage'));
     expect(localGet.length).toBe(1);
-  });
-
-  test('Removing item from list', () => {
-    addItems('Washing', false, 1);
-    const localGet = JSON.parse(localStorage.getItem('listStorage'));
-    expect(localGet.length).toBe(2);
-    localGet.pop();
-    localStorage.setItem('listStorage', JSON.stringify(localGet));
-    renderItems();
-    const todolist = document.getElementById('containerItems');
-    expect(todolist.childElementCount).toBe(1);
   });
 });
