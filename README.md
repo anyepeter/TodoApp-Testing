@@ -1,31 +1,59 @@
-# ToDoList
 
-> This project allows user to add and remove items from the list and determine whether they are done or not. 
-> The project works by running the command in your terminal 'npm run build' following 'npm start'. If linters are checked locally, please don't forget to install the needed modules 'npm install', if you have a webpack error in your terminal, please run the following command instead 'npm i webpack' and then run the previous commands again.
+# Todo List project
 
-## Built With
-
-- Html, Js(ES6), Css.
-- Linters.
-
-## Author
-
-👤 **Shuhad Loofer**
-
-- GitHub: [@Shuhad786](https://github.com/Shuhad786)
-- LinkedIn: [shuhad-loofer](www.linkedin.com/in/shuhad-loofer)
+>In this project, an individual can set a list of things to do and achieve them by the end of the day.
 
 
-## Live Preview
-- https://shuhad786.github.io/ToDoListApp/
+## The project is built using
+
+- HTML
+- CSS
+- JavaScript 
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+- A working browser application (Google chrome, Mozilla Fire fox, Microsoft edge ...)
+- VSCode or any other equivalent code editor :atom:
+- Node Package Manager (For running, debuging, or installing dependancies to be used)
+
+### Install
+git clone [https://github.com/anyepeter/To-Do-List.git](https://github.com/anyepeter/To-Do-List.git)
+### Usage
+
+### Run tests
+- npx eslint.
+- npx webhint .
+- npx stylelint "**/*.{css,scss}"
+
+👤 **ANYE PETER**
+
+- GitHub: [@anyepeter](https://github.com/anyepeter)
+- Twitter: [@anyepeter](https://twitter.com/home?lang=en)
+- LinkedIn: [peterchendi](https://www.linkedin.com/feed/)
+
+👤 **Olivier Kango**
+
+- GitHub: [@Olivier Kango](https://github.com/Olivier-Kango)
+- Twitter: [@olivierkango1](@olivierkango1)
+- LinkedIn: [Olivier Kango](https://www.linkedin.com/in/olivier-kango-b990601b8)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/anyepeter/Awesome-books-with-ES6/issues).
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
-
 
 ## 📝 License
 
 This project is [MIT](./LICENSE) licensed.
+
+_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
