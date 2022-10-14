@@ -1,4 +1,4 @@
-import { addItemsEl } from './src/modules/addremoveItems.js';
+import { addItems } from './src/modules/addremoveItems.js';
 
 describe('Add and Remove Testing', () => {
   document.body.innerHTML = `
