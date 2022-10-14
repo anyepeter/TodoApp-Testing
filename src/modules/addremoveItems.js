@@ -12,8 +12,8 @@ class ContainerClass {
 }
 
 const taskItem = new ContainerClass();
-const infoItems = JSON.parse(localStorage.getItem('listStorage')) || [];
 const renderItems = () => {
+  const infoItems = JSON.parse(localStorage.getItem('listStorage')) || [];
   const itemEI = document.getElementById('itemsContainer');
   itemEI.innerHTML = '';
   infoItems.forEach((element, id) => {
@@ -32,8 +32,9 @@ const renderItems = () => {
 
 const addItemsEl = (description, completed, index) => {
   const newItem = new ContainerClass(description, completed, index);
-  infoItems.push(newItem);
+  taskItem.items.push(newItem);
   localStorage.setItem('listStorage', JSON.stringify(taskItem.items));
+  itemsToBeAdd.value = '';
   renderItems();
 };
 
