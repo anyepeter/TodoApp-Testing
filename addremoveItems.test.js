@@ -48,4 +48,15 @@ describe('Testing the update functionalities', () => {
     const itemsToDo = document.getElementById('containerItems');
     expect(itemsToDo.children[0].children[0].checked).toBe(false);
   });
+  test('Should remove all completed true', () => {
+    const localGet = JSON.parse(localStorage.getItem('listStorage'));
+    localGet.pop();
+    const newData1 = { description: 'video-game', completed: true, index: 0 };
+    const newData2 = { description: 'activities', completed: true, index: 1 };
+    localGet.push(newData1);
+    localGet.push(newData2);
+    const Completed = jest.fn(() => localGet.filter((item) => item.completed === true));
+    const completedItem = Completed();
+    expect(completedItem).toHaveLength(2);
+  });
 });
